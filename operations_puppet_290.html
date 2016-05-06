@@ -1,0 +1,2303 @@
+<html>
+<head>
+    <script type="text/javascript" src="dist/vis.js"></script>
+    <link href="dist/vis.css" rel="stylesheet" type="text/css" />
+
+    <style type="text/css">
+        #mynetwork {
+            width: 1000px;
+            height: 800px;
+            border: 1px solid lightgray;
+        }
+    </style>
+</head>
+<body>
+<div id="mynetwork"></div>
+
+<script type="text/javascript">
+
+
+    // create a network
+    var container = document.getElementById('mynetwork');
+    // provide data in the DOT language
+var DOTstring = 'digraph {\
+    1 [label=zuul];\
+    8 [label=zotero];\
+    9 [label=zookeeper];\
+    13 [label=xvfb];\
+    14 [label=xenon];\
+    15 [label=wikistats];\
+    20 [label=wikimetrics];\
+    25 [label=wikimania_scholarships];\
+    26 [label=wikilabels];\
+    29 [label=wikidatabuilder];\
+    30 [label=webperf];\
+    36 [label=wdqs];\
+    44 [label=wdq_mm];\
+    46 [label=vm];\
+    48 [label=visualdiff];\
+    50 [label=varnishkafka];\
+    53 [label=varnish];\
+    75 [label=vagrant];\
+    79 [label=uwsgi];\
+    81 [label=udp2log];\
+    86 [label=trebuchet];\
+    88 [label=torrus];\
+    95 [label=tor];\
+    97 [label=toolserver_legacy];\
+    98 [label=toollabs];\
+    139 [label=tmpreaper];\
+    142 [label=tlsproxy];\
+    145 [label=tilerator];\
+    147 [label=testreduce];\
+    150 [label=tendril];\
+    152 [label=tcpircbot];\
+    154 [label=system];\
+    155 [label=sysfs];\
+    158 [label=sysctl];\
+    161 [label=swift];\
+    177 [label=sudo];\
+    180 [label=strongswan];\
+    182 [label=stdlib];\
+    184 [label=statsite];\
+    187 [label=statsdlb];\
+    188 [label=statsd];\
+    189 [label=statistics];\
+    207 [label=sslcert];\
+    215 [label=ssh];\
+    219 [label=squid3];\
+    220 [label=spamassassin];\
+    221 [label=snapshot];\
+    243 [label=smokeping];\
+    246 [label=shinken];\
+    250 [label=service];\
+    254 [label=servermon];\
+    255 [label=sentry];\
+    257 [label=security];\
+    261 [label=scap];\
+    269 [label=salt];\
+    274 [label=rsyslog];\
+    277 [label=rsync];\
+    282 [label=role];\
+    376 [label=restbase];\
+    379 [label=requesttracker];\
+    386 [label=reprepro];\
+    388 [label=releases];\
+    391 [label=redis];\
+    394 [label=rcstream];\
+    397 [label=rancid];\
+    398 [label=racktables];\
+    399 [label=quarry];\
+    402 [label=pybal];\
+    411 [label=puppetmaster];\
+    428 [label=puppet_statsd];\
+    429 [label=puppet_compiler];\
+    433 [label=puppet];\
+    437 [label=publichtml];\
+    438 [label=postgresql];\
+    446 [label=poolcounter];\
+    447 [label=pmacct];\
+    448 [label=planet];\
+    459 [label=phragile];\
+    460 [label=phabricator];\
+    472 [label=package_builder];\
+    477 [label=otrs];\
+    480 [label=osm];\
+    488 [label=ores];\
+    497 [label=openstack];\
+    518 [label=openldap];\
+    520 [label=ocg];\
+    524 [label=nutcracker];\
+    526 [label=ntp];\
+    527 [label=nrpe];\
+    532 [label=nodepool];\
+    533 [label=noc];\
+    534 [label=nginx];\
+    538 [label=nagios_common];\
+    546 [label=mysql_wmf];\
+    561 [label=mysql_multi_instance];\
+    564 [label=mysql];\
+    581 [label=mw_rc_irc];\
+    584 [label=motd];\
+    587 [label=monitoring];\
+    595 [label=mongodb];\
+    597 [label=mobileapps];\
+    598 [label=mirrors];\
+    602 [label=miredo];\
+    603 [label=memcached];\
+    606 [label=mediawiki_singlenode];\
+    608 [label=mediawiki];\
+    652 [label=maven];\
+    653 [label=mattermost];\
+    655 [label=mathoid];\
+    656 [label=mariadb];\
+    664 [label=mailman];\
+    669 [label=lxc];\
+    670 [label=lvs];\
+    678 [label=logster];\
+    680 [label=logstash];\
+    693 [label=locales];\
+    696 [label=limn];\
+    699 [label=librenms];\
+    702 [label=ldap];\
+    710 [label=labstore];\
+    718 [label=labs_vmbuilder];\
+    719 [label=labs_vagrant];\
+    720 [label=labs_lvm];\
+    724 [label=labs_ldap_dns];\
+    725 [label=labs_dns];\
+    726 [label=labs_debrepo];\
+    728 [label=labs_bootstrapvz];\
+    729 [label=kibana];\
+    730 [label=keyholder];\
+    734 [label=kartotherian];\
+    735 [label=kafkatee];\
+    739 [label=kafka];\
+    749 [label=k8s];\
+    760 [label=jmxtrans];\
+    763 [label=jenkins];\
+    768 [label=java];\
+    769 [label=irqbalance];\
+    770 [label=ircyall];\
+    771 [label=ircecho];\
+    772 [label=ipmi];\
+    773 [label=interface];\
+    786 [label=install_server];\
+    791 [label=iegreview];\
+    792 [label=identd];\
+    793 [label=icinga];\
+    809 [label=hhvm];\
+    813 [label=haproxy];\
+    814 [label=gridengine];\
+    828 [label=graphoid];\
+    829 [label=graphite];\
+    834 [label=grafana];\
+    836 [label=gitblit];\
+    837 [label=git];\
+    840 [label=gerrit];\
+    845 [label=geowiki];\
+    853 [label=geoip];\
+    859 [label=ganglia];\
+    874 [label=ganeti];\
+    876 [label=ferm];\
+    880 [label=facilities];\
+    883 [label=extdist];\
+    884 [label=exim4];\
+    887 [label=eventlogging];\
+    900 [label=etherpad];\
+    902 [label=etcd];\
+    911 [label=elasticsearch];\
+    920 [label=dynamicproxy];\
+    922 [label=dumps];\
+    924 [label=drac];\
+    925 [label=docker];\
+    926 [label=dnsrecursor];\
+    931 [label=diamond];\
+    938 [label=deployment];\
+    942 [label=debdeploy];\
+    943 [label=debconf];\
+    944 [label=dataset];\
+    964 [label=cxserver];\
+    965 [label=cpufrequtils];\
+    966 [label=coredb_mysql];\
+    974 [label=contint];\
+    998 [label=conftool];\
+    1002 [label=confd];\
+    1004 [label=coal];\
+    1005 [label=clamav];\
+    1006 [label=citoid];\
+    1007 [label=chromium];\
+    1008 [label=celery];\
+    1010 [label=cdh];\
+    1056 [label=cassandra];\
+    1061 [label=camus];\
+    1063 [label=burrow];\
+    1064 [label=bugzilla_static];\
+    1065 [label=beta];\
+    1071 [label=bastionhost];\
+    1072 [label=base];\
+    1094 [label=bacula];\
+    1107 [label=backup];\
+    1111 [label=authdns];\
+    1118 [label=archiva];\
+    1121 [label=aptly];\
+    1124 [label=apt];\
+    1130 [label=apparmor];\
+    1132 [label=apertium];\
+    1133 [label=apache];\
+    1145 [label=annualreport];\
+    1146 [label=alternatives];\
+    1147 [label=admin];\
+    1153 [label=290];\
+    1 -> 1 [label=10,color=purple];\
+    1 -> 1 [label=2,color=red];\
+    1 -> 1 [label=3,color=orange];\
+    1 -> 527 [label=4,color=red];\
+    8 -> 8 [label=10,color=purple];\
+    9 -> 9 [label=2,color=black];\
+    9 -> 9 [label=11,color=purple];\
+    9 -> 760 [label=1,color=red];\
+    9 -> 760 [label=1,color=navy];\
+    13 -> 13 [label=2,color=purple];\
+    13 -> 1072 [label=1,color=red];\
+    14 -> 14 [label=6,color=purple];\
+    15 -> 15 [label=3,color=navy];\
+    15 -> 15 [label=34,color=red];\
+    15 -> 1133 [label=1\
+               ,color=orange];\
+    15 -> 1133 [label=1,color=red];\
+    20 -> 20 [label=3,color=orange];\
+    20 -> 20 [label=6,color=purple];\
+    20 -> 79 [label=1,color=red];\
+    20 -> 391 [label=1,color=red];\
+    20 -> 837 [label=2,color=red];\
+    20 -> 1072 [label=2,color=red];\
+    25 -> 154 [label=1,color=red];\
+    25 -> 1133 [label=1\
+               ,color=purple];\
+    25 -> 1133 [label=1,color=red];\
+    25 -> 1133 [label=2\
+               ,color=orange];\
+    26 -> 26 [label=2,color=purple];\
+    26 -> 79 [label=1,color=red];\
+    26 -> 603 [label=1,color=navy];\
+    26 -> 837 [label=1,color=red];\
+    29 -> 29 [label=16\
+             ,color=purple];\
+    29 -> 837 [label=4,color=red];\
+    29 -> 1065 [label=1\
+               ,color=purple];\
+    30 -> 30 [label=5,color=orange];\
+    30 -> 30 [label=16\
+             ,color=purple];\
+    36 -> 36 [label=13\
+             ,color=purple];\
+    36 -> 36 [label=5,color=orange];\
+    36 -> 177 [label=1,color=red];\
+    36 -> 527 [label=4,color=red];\
+    36 -> 534 [label=1,color=red];\
+    36 -> 587 [label=2,color=red];\
+    36 -> 768 [label=1\
+              ,color=orange];\
+    36 -> 931 [label=2,color=red];\
+    36 -> 1072 [label=1,color=red];\
+    44 -> 44 [label=5,color=purple];\
+    44 -> 534 [label=1,color=red];\
+    46 -> 158 [label=2,color=red];\
+    48 -> 48 [label=4,color=purple];\
+    48 -> 837 [label=2,color=red];\
+    50 -> 50 [label=2,color=orange];\
+    50 -> 50 [label=8,color=purple];\
+    50 -> 859 [label=3\
+              ,color=purple];\
+    50 -> 1072 [label=1,color=red];\
+    53 -> 53 [label=12\
+             ,color=orange];\
+    53 -> 53 [label=2,color=red];\
+    53 -> 53 [label=37\
+             ,color=purple];\
+    53 -> 527 [label=3,color=red];\
+    53 -> 587 [label=1,color=red];\
+    53 -> 720 [label=1\
+              ,color=orange];\
+    53 -> 720 [label=1,color=red];\
+    53 -> 859 [label=5\
+              ,color=purple];\
+    53 -> 1002 [label=1,color=red];\
+    53 -> 1072 [label=1\
+               ,color=orange];\
+    53 -> 1072 [label=7,color=red];\
+    75 -> 75 [label=3,color=orange];\
+    75 -> 75 [label=1,color=red];\
+    75 -> 75 [label=4,color=purple];\
+    75 -> 177 [label=2,color=red];\
+    75 -> 669 [label=1\
+              ,color=orange];\
+    75 -> 837 [label=1,color=red];\
+    75 -> 1130 [label=1\
+               ,color=purple];\
+    79 -> 79 [label=1,color=orange];\
+    79 -> 79 [label=3,color=purple];\
+    79 -> 527 [label=1,color=red];\
+    79 -> 1072 [label=1,color=red];\
+    81 -> 81 [label=2,color=orange];\
+    81 -> 81 [label=1,color=red];\
+    81 -> 81 [label=5,color=purple];\
+    81 -> 154 [label=1,color=red];\
+    81 -> 158 [label=1,color=red];\
+    81 -> 277 [label=1,color=navy];\
+    81 -> 277 [label=1,color=red];\
+    81 -> 527 [label=2,color=red];\
+    81 -> 587 [label=1,color=red];\
+    81 -> 859 [label=2,color=red];\
+    81 -> 876 [label=5,color=red];\
+    86 -> 86 [label=1,color=orange];\
+    86 -> 269 [label=1,color=red];\
+    86 -> 391 [label=1\
+              ,color=orange];\
+    88 -> 88 [label=5,color=orange];\
+    88 -> 88 [label=16\
+             ,color=purple];\
+    88 -> 154 [label=1,color=red];\
+    88 -> 1133 [label=1\
+               ,color=purple];\
+    88 -> 1133 [label=1,color=red];\
+    88 -> 1133 [label=3\
+               ,color=orange];\
+    95 -> 95 [label=6,color=purple];\
+    97 -> 97 [label=3,color=purple];\
+    97 -> 154 [label=1,color=red];\
+    97 -> 207 [label=1,color=red];\
+    97 -> 884 [label=1,color=navy];\
+    97 -> 1133 [label=2\
+               ,color=orange];\
+    97 -> 1133 [label=1,color=red];\
+    98 -> 98 [label=43\
+             ,color=purple];\
+    98 -> 98 [label=18\
+             ,color=orange];\
+    98 -> 98 [label=4,color=navy];\
+    98 -> 98 [label=12,color=black];\
+    98 -> 154 [label=3,color=red];\
+    98 -> 158 [label=1,color=red];\
+    98 -> 207 [label=2,color=red];\
+    98 -> 246 [label=1,color=red];\
+    98 -> 257 [label=2,color=red];\
+    98 -> 282 [label=1\
+              ,color=purple];\
+    98 -> 391 [label=1\
+              ,color=purple];\
+    98 -> 391 [label=1,color=red];\
+    98 -> 391 [label=3\
+              ,color=orange];\
+    98 -> 411 [label=1,color=navy];\
+    98 -> 433 [label=1,color=navy];\
+    98 -> 534 [label=2,color=red];\
+    98 -> 584 [label=5,color=red];\
+    98 -> 587 [label=4,color=red];\
+    98 -> 608 [label=1\
+              ,color=orange];\
+    98 -> 693 [label=1\
+              ,color=orange];\
+    98 -> 702 [label=1\
+              ,color=orange];\
+    98 -> 720 [label=2\
+              ,color=orange];\
+    98 -> 720 [label=4,color=red];\
+    98 -> 749 [label=1\
+              ,color=orange];\
+    98 -> 749 [label=1,color=navy];\
+    98 -> 792 [label=1\
+              ,color=orange];\
+    98 -> 814 [label=8\
+              ,color=orange];\
+    98 -> 814 [label=4,color=navy];\
+    98 -> 814 [label=8,color=red];\
+    98 -> 814 [label=1\
+              ,color=purple];\
+    98 -> 837 [label=2,color=red];\
+    98 -> 876 [label=2,color=red];\
+    98 -> 884 [label=2,color=navy];\
+    98 -> 920 [label=1,color=navy];\
+    98 -> 920 [label=4\
+              ,color=purple];\
+    98 -> 931 [label=2,color=red];\
+    98 -> 1072 [label=2,color=red];\
+    98 -> 1072 [label=1\
+               ,color=orange];\
+    98 -> 1124 [label=1,color=red];\
+    139 -> 139 [label=2\
+               ,color=orange];\
+    139 -> 139 [label=3\
+               ,color=purple];\
+    142 -> 142 [label=1\
+               ,color=purple];\
+    142 -> 142 [label=2\
+               ,color=orange];\
+    142 -> 207 [label=3,color=red];\
+    142 -> 527 [label=1,color=red];\
+    142 -> 534 [label=1\
+               ,color=purple];\
+    142 -> 534 [label=1,color=navy];\
+    142 -> 534 [label=1,color=red];\
+    142 -> 1072 [label=1\
+                ,color=purple];\
+    142 -> 1072 [label=1\
+                ,color=orange];\
+    145 -> 145 [label=1\
+               ,color=orange];\
+    145 -> 250 [label=2,color=red];\
+    147 -> 147 [label=6\
+               ,color=purple];\
+    147 -> 837 [label=1,color=red];\
+    150 -> 150 [label=9\
+               ,color=purple];\
+    150 -> 837 [label=1,color=red];\
+    150 -> 1133 [label=1,color=red];\
+    152 -> 152 [label=3\
+               ,color=purple];\
+    152 -> 152 [label=1\
+               ,color=orange];\
+    152 -> 581 [label=1\
+               ,color=purple];\
+    154 -> 584 [label=1,color=red];\
+    155 -> 155 [label=1\
+               ,color=orange];\
+    155 -> 155 [label=1,color=red];\
+    155 -> 155 [label=1\
+               ,color=purple];\
+    158 -> 158 [label=1\
+               ,color=orange];\
+    158 -> 158 [label=1,color=red];\
+    158 -> 158 [label=1\
+               ,color=purple];\
+    161 -> 158 [label=1,color=red];\
+    161 -> 161 [label=17\
+               ,color=purple];\
+    161 -> 161 [label=14,color=red];\
+    161 -> 274 [label=1,color=red];\
+    161 -> 277 [label=1,color=navy];\
+    161 -> 277 [label=3,color=red];\
+    161 -> 527 [label=2\
+               ,color=orange];\
+    161 -> 527 [label=2,color=red];\
+    161 -> 587 [label=3,color=red];\
+    161 -> 1124 [label=2,color=red];\
+    177 -> 177 [label=2\
+               ,color=orange];\
+    177 -> 177 [label=4\
+               ,color=purple];\
+    180 -> 177 [label=1,color=red];\
+    180 -> 180 [label=8\
+               ,color=purple];\
+    180 -> 527 [label=1,color=red];\
+    180 -> 1072 [label=1,color=red];\
+    182 -> 182 [label=1,color=navy];\
+    184 -> 184 [label=12\
+               ,color=purple];\
+    187 -> 187 [label=2\
+               ,color=purple];\
+    188 -> 188 [label=3\
+               ,color=purple];\
+    189 -> 189 [label=11\
+               ,color=purple];\
+    189 -> 189 [label=4,color=red];\
+    189 -> 189 [label=1,color=navy];\
+    189 -> 189 [label=8\
+               ,color=orange];\
+    189 -> 277 [label=1\
+               ,color=orange];\
+    189 -> 277 [label=3,color=red];\
+    189 -> 564 [label=1,color=red];\
+    189 -> 564 [label=1\
+               ,color=orange];\
+    189 -> 837 [label=6,color=red];\
+    189 -> 845 [label=2\
+               ,color=orange];\
+    189 -> 853 [label=1\
+               ,color=orange];\
+    189 -> 876 [label=1,color=red];\
+    189 -> 1111 [label=2\
+                ,color=purple];\
+    189 -> 1133 [label=6\
+                ,color=orange];\
+    189 -> 1133 [label=3,color=red];\
+    207 -> 142 [label=1\
+               ,color=purple];\
+    207 -> 207 [label=11\
+               ,color=purple];\
+    207 -> 207 [label=1,color=red];\
+    207 -> 207 [label=7\
+               ,color=orange];\
+    207 -> 911 [label=2\
+               ,color=purple];\
+    207 -> 1130 [label=2\
+                ,color=purple];\
+    207 -> 1130 [label=1\
+                ,color=orange];\
+    215 -> 215 [label=1\
+               ,color=orange];\
+    215 -> 215 [label=2\
+               ,color=purple];\
+    219 -> 219 [label=4\
+               ,color=purple];\
+    220 -> 220 [label=7\
+               ,color=purple];\
+    220 -> 527 [label=1,color=red];\
+    221 -> 154 [label=2,color=red];\
+    221 -> 221 [label=8\
+               ,color=purple];\
+    221 -> 221 [label=14,color=red];\
+    221 -> 221 [label=6,color=navy];\
+    221 -> 221 [label=16\
+               ,color=orange];\
+    221 -> 608 [label=3\
+               ,color=orange];\
+    221 -> 837 [label=1,color=red];\
+    221 -> 1072 [label=1,color=red];\
+    243 -> 154 [label=1,color=red];\
+    243 -> 243 [label=4\
+               ,color=purple];\
+    243 -> 1133 [label=3\
+                ,color=orange];\
+    243 -> 1133 [label=1,color=red];\
+    246 -> 246 [label=4\
+               ,color=orange];\
+    246 -> 246 [label=30\
+               ,color=purple];\
+    246 -> 538 [label=4,color=navy];\
+    246 -> 771 [label=1,color=navy];\
+    250 -> 250 [label=2\
+               ,color=orange];\
+    250 -> 250 [label=1,color=red];\
+    250 -> 250 [label=2\
+               ,color=purple];\
+    250 -> 527 [label=1,color=red];\
+    250 -> 587 [label=1,color=red];\
+    250 -> 876 [label=1,color=red];\
+    250 -> 1072 [label=1,color=red];\
+    254 -> 254 [label=1\
+               ,color=purple];\
+    255 -> 255 [label=10\
+               ,color=purple];\
+    255 -> 255 [label=1\
+               ,color=orange];\
+    255 -> 391 [label=1,color=red];\
+    255 -> 438 [label=1\
+               ,color=orange];\
+    255 -> 438 [label=2,color=red];\
+    255 -> 534 [label=2\
+               ,color=orange];\
+    255 -> 534 [label=1,color=red];\
+    255 -> 837 [label=1,color=red];\
+    255 -> 1072 [label=2,color=red];\
+    257 -> 257 [label=2\
+               ,color=orange];\
+    257 -> 257 [label=1,color=red];\
+    257 -> 257 [label=4\
+               ,color=purple];\
+    261 -> 177 [label=3,color=red];\
+    261 -> 215 [label=1,color=red];\
+    261 -> 261 [label=4\
+               ,color=orange];\
+    261 -> 261 [label=1,color=navy];\
+    261 -> 277 [label=2\
+               ,color=orange];\
+    261 -> 277 [label=2,color=red];\
+    261 -> 608 [label=1\
+               ,color=purple];\
+    261 -> 608 [label=3\
+               ,color=orange];\
+    261 -> 837 [label=1,color=red];\
+    261 -> 876 [label=1,color=red];\
+    261 -> 1153 [label=2\
+                ,color=orange];\
+    269 -> 158 [label=1,color=red];\
+    269 -> 269 [label=1,color=red];\
+    269 -> 269 [label=13\
+               ,color=purple];\
+    274 -> 274 [label=1\
+               ,color=orange];\
+    274 -> 274 [label=1,color=red];\
+    274 -> 274 [label=5\
+               ,color=purple];\
+    277 -> 277 [label=1\
+               ,color=black];\
+    277 -> 277 [label=1,color=red];\
+    277 -> 277 [label=1\
+               ,color=orange];\
+    277 -> 277 [label=5\
+               ,color=purple];\
+    282 -> 1 [label=2,color=orange];\
+    282 -> 1 [label=3,color=navy];\
+    282 -> 9 [label=3,color=navy];\
+    282 -> 46 [label=2,color=red];\
+    282 -> 50 [label=1\
+              ,color=purple];\
+    282 -> 50 [label=5,color=red];\
+    282 -> 53 [label=23,color=red];\
+    282 -> 53 [label=6,color=navy];\
+    282 -> 53 [label=4\
+              ,color=orange];\
+    282 -> 75 [label=3\
+              ,color=orange];\
+    282 -> 95 [label=1,color=red];\
+    282 -> 95 [label=1,color=navy];\
+    282 -> 98 [label=1\
+              ,color=orange];\
+    282 -> 142 [label=4,color=red];\
+    282 -> 154 [label=44,color=red];\
+    282 -> 158 [label=3,color=red];\
+    282 -> 161 [label=2,color=red];\
+    282 -> 177 [label=2,color=red];\
+    282 -> 177 [label=1\
+               ,color=orange];\
+    282 -> 207 [label=7,color=red];\
+    282 -> 215 [label=1,color=red];\
+    282 -> 246 [label=1\
+               ,color=orange];\
+    282 -> 246 [label=1,color=navy];\
+    282 -> 246 [label=2,color=red];\
+    282 -> 261 [label=3\
+               ,color=orange];\
+    282 -> 261 [label=1,color=red];\
+    282 -> 269 [label=1,color=red];\
+    282 -> 269 [label=5,color=navy];\
+    282 -> 274 [label=1,color=red];\
+    282 -> 277 [label=4,color=red];\
+    282 -> 277 [label=3\
+               ,color=orange];\
+    282 -> 282 [label=28\
+               ,color=purple];\
+    282 -> 282 [label=51\
+               ,color=orange];\
+    282 -> 282 [label=12\
+               ,color=navy];\
+    282 -> 282 [label=4,color=red];\
+    282 -> 282 [label=3\
+               ,color=black];\
+    282 -> 402 [label=2\
+               ,color=orange];\
+    282 -> 402 [label=1,color=navy];\
+    282 -> 411 [label=5,color=navy];\
+    282 -> 411 [label=1\
+               ,color=orange];\
+    282 -> 438 [label=2\
+               ,color=orange];\
+    282 -> 438 [label=4,color=navy];\
+    282 -> 438 [label=10,color=red];\
+    282 -> 472 [label=1\
+               ,color=orange];\
+    282 -> 480 [label=1\
+               ,color=orange];\
+    282 -> 480 [label=1,color=navy];\
+    282 -> 480 [label=4,color=red];\
+    282 -> 497 [label=9\
+               ,color=orange];\
+    282 -> 497 [label=12\
+               ,color=navy];\
+    282 -> 518 [label=3,color=navy];\
+    282 -> 524 [label=1,color=navy];\
+    282 -> 524 [label=1\
+               ,color=orange];\
+    282 -> 527 [label=5,color=red];\
+    282 -> 527 [label=1\
+               ,color=orange];\
+    282 -> 532 [label=1,color=navy];\
+    282 -> 532 [label=1\
+               ,color=purple];\
+    282 -> 564 [label=1,color=navy];\
+    282 -> 564 [label=1\
+               ,color=orange];\
+    282 -> 584 [label=1,color=red];\
+    282 -> 587 [label=26,color=red];\
+    282 -> 606 [label=1,color=navy];\
+    282 -> 608 [label=5\
+               ,color=orange];\
+    282 -> 653 [label=2,color=navy];\
+    282 -> 656 [label=4,color=navy];\
+    282 -> 670 [label=6\
+               ,color=orange];\
+    282 -> 670 [label=7,color=navy];\
+    282 -> 678 [label=1,color=red];\
+    282 -> 702 [label=1\
+               ,color=orange];\
+    282 -> 702 [label=1,color=navy];\
+    282 -> 710 [label=1,color=navy];\
+    282 -> 710 [label=3\
+               ,color=orange];\
+    282 -> 718 [label=1,color=navy];\
+    282 -> 719 [label=1,color=navy];\
+    282 -> 720 [label=2,color=red];\
+    282 -> 725 [label=1,color=navy];\
+    282 -> 730 [label=2,color=red];\
+    282 -> 730 [label=4\
+               ,color=orange];\
+    282 -> 739 [label=4,color=red];\
+    282 -> 739 [label=6,color=navy];\
+    282 -> 739 [label=2\
+               ,color=purple];\
+    282 -> 773 [label=7,color=red];\
+    282 -> 829 [label=2\
+               ,color=orange];\
+    282 -> 829 [label=2,color=navy];\
+    282 -> 837 [label=2,color=red];\
+    282 -> 853 [label=4\
+               ,color=orange];\
+    282 -> 859 [label=3,color=navy];\
+    282 -> 859 [label=3,color=red];\
+    282 -> 876 [label=47,color=red];\
+    282 -> 887 [label=1,color=red];\
+    282 -> 887 [label=1,color=navy];\
+    282 -> 887 [label=2\
+               ,color=orange];\
+    282 -> 911 [label=4\
+               ,color=orange];\
+    282 -> 911 [label=1,color=navy];\
+    282 -> 911 [label=2\
+               ,color=purple];\
+    282 -> 920 [label=1\
+               ,color=orange];\
+    282 -> 920 [label=1,color=navy];\
+    282 -> 926 [label=1\
+               ,color=purple];\
+    282 -> 926 [label=1,color=red];\
+    282 -> 926 [label=2,color=navy];\
+    282 -> 926 [label=1\
+               ,color=orange];\
+    282 -> 931 [label=1\
+               ,color=purple];\
+    282 -> 931 [label=6,color=red];\
+    282 -> 938 [label=4,color=navy];\
+    282 -> 942 [label=1\
+               ,color=orange];\
+    282 -> 944 [label=1,color=red];\
+    282 -> 944 [label=5,color=navy];\
+    282 -> 965 [label=1\
+               ,color=orange];\
+    282 -> 966 [label=1\
+               ,color=purple];\
+    282 -> 974 [label=1,color=navy];\
+    282 -> 974 [label=1\
+               ,color=orange];\
+    282 -> 998 [label=2\
+               ,color=orange];\
+    282 -> 1064 [label=1\
+                ,color=orange];\
+    282 -> 1065 [label=1\
+                ,color=orange];\
+    282 -> 1071 [label=2\
+                ,color=orange];\
+    282 -> 1072 [label=1\
+                ,color=purple];\
+    282 -> 1072 [label=1\
+                ,color=navy];\
+    282 -> 1072 [label=13\
+                ,color=orange];\
+    282 -> 1107 [label=9,color=red];\
+    282 -> 1124 [label=1,color=red];\
+    282 -> 1133 [label=5\
+                ,color=orange];\
+    282 -> 1133 [label=2,color=red];\
+    282 -> 1153 [label=1\
+                ,color=black];\
+    282 -> 1153 [label=29\
+                ,color=orange];\
+    376 -> 177 [label=1,color=red];\
+    376 -> 215 [label=1,color=red];\
+    376 -> 250 [label=1,color=red];\
+    376 -> 376 [label=1\
+               ,color=orange];\
+    376 -> 587 [label=1,color=red];\
+    379 -> 379 [label=8\
+               ,color=purple];\
+    379 -> 379 [label=1,color=navy];\
+    379 -> 379 [label=5\
+               ,color=orange];\
+    379 -> 1133 [label=1\
+                ,color=purple];\
+    379 -> 1133 [label=1,color=red];\
+    379 -> 1133 [label=4\
+                ,color=orange];\
+    386 -> 215 [label=1,color=red];\
+    386 -> 386 [label=10\
+               ,color=purple];\
+    388 -> 177 [label=1,color=red];\
+    388 -> 386 [label=2\
+               ,color=purple];\
+    388 -> 386 [label=2,color=navy];\
+    388 -> 388 [label=7\
+               ,color=purple];\
+    388 -> 1133 [label=2\
+                ,color=orange];\
+    388 -> 1133 [label=1,color=red];\
+    391 -> 155 [label=1,color=red];\
+    391 -> 158 [label=1,color=red];\
+    391 -> 391 [label=1\
+               ,color=purple];\
+    391 -> 391 [label=1\
+               ,color=orange];\
+    391 -> 1072 [label=1,color=red];\
+    394 -> 207 [label=1,color=red];\
+    394 -> 391 [label=1\
+               ,color=orange];\
+    394 -> 394 [label=7\
+               ,color=purple];\
+    394 -> 534 [label=3\
+               ,color=purple];\
+    394 -> 534 [label=1,color=navy];\
+    394 -> 534 [label=2,color=red];\
+    397 -> 397 [label=5\
+               ,color=purple];\
+    398 -> 564 [label=1\
+               ,color=orange];\
+    398 -> 1133 [label=2\
+                ,color=purple];\
+    398 -> 1133 [label=1,color=red];\
+    398 -> 1133 [label=5\
+                ,color=orange];\
+    399 -> 79 [label=1,color=red];\
+    399 -> 391 [label=1,color=red];\
+    399 -> 391 [label=1\
+               ,color=orange];\
+    399 -> 399 [label=3\
+               ,color=orange];\
+    399 -> 399 [label=4\
+               ,color=purple];\
+    399 -> 534 [label=1,color=red];\
+    399 -> 564 [label=1,color=navy];\
+    399 -> 837 [label=1,color=red];\
+    399 -> 1008 [label=1,color=red];\
+    402 -> 274 [label=1,color=red];\
+    402 -> 402 [label=8\
+               ,color=purple];\
+    402 -> 402 [label=4,color=red];\
+    402 -> 527 [label=2,color=red];\
+    402 -> 931 [label=1,color=red];\
+    402 -> 1002 [label=1,color=red];\
+    402 -> 1133 [label=1\
+                ,color=purple];\
+    402 -> 1133 [label=1,color=red];\
+    411 -> 177 [label=1,color=red];\
+    411 -> 215 [label=2,color=red];\
+    411 -> 411 [label=8\
+               ,color=orange];\
+    411 -> 411 [label=5,color=navy];\
+    411 -> 411 [label=14\
+               ,color=purple];\
+    411 -> 587 [label=3,color=red];\
+    411 -> 837 [label=2,color=red];\
+    411 -> 853 [label=2,color=navy];\
+    411 -> 1072 [label=2,color=red];\
+    411 -> 1072 [label=2\
+                ,color=purple];\
+    411 -> 1133 [label=1\
+                ,color=purple];\
+    411 -> 1133 [label=2,color=red];\
+    411 -> 1133 [label=4\
+                ,color=orange];\
+    429 -> 429 [label=3\
+               ,color=purple];\
+    429 -> 429 [label=1,color=navy];\
+    429 -> 429 [label=2\
+               ,color=orange];\
+    429 -> 534 [label=1,color=red];\
+    429 -> 534 [label=1\
+               ,color=purple];\
+    429 -> 837 [label=3,color=red];\
+    433 -> 154 [label=2,color=red];\
+    433 -> 411 [label=1\
+               ,color=orange];\
+    433 -> 411 [label=4,color=navy];\
+    433 -> 411 [label=1\
+               ,color=purple];\
+    433 -> 433 [label=3,color=navy];\
+    433 -> 433 [label=10\
+               ,color=purple];\
+    433 -> 702 [label=1\
+               ,color=orange];\
+    433 -> 837 [label=2,color=red];\
+    433 -> 1072 [label=1\
+                ,color=purple];\
+    433 -> 1072 [label=1,color=red];\
+    437 -> 154 [label=1,color=red];\
+    437 -> 587 [label=1,color=red];\
+    437 -> 1133 [label=5\
+                ,color=orange];\
+    437 -> 1133 [label=1,color=red];\
+    438 -> 438 [label=15\
+               ,color=purple];\
+    438 -> 438 [label=2,color=navy];\
+    438 -> 859 [label=2\
+               ,color=purple];\
+    446 -> 446 [label=1\
+               ,color=purple];\
+    447 -> 447 [label=3\
+               ,color=purple];\
+    447 -> 853 [label=1\
+               ,color=orange];\
+    448 -> 448 [label=1\
+               ,color=orange];\
+    448 -> 448 [label=5,color=red];\
+    448 -> 448 [label=3\
+               ,color=purple];\
+    448 -> 693 [label=1\
+               ,color=orange];\
+    448 -> 1133 [label=2,color=red];\
+    448 -> 1133 [label=4\
+                ,color=orange];\
+    448 -> 1153 [label=1\
+                ,color=orange];\
+    459 -> 459 [label=13\
+               ,color=purple];\
+    459 -> 837 [label=2,color=red];\
+    459 -> 1133 [label=1\
+                ,color=purple];\
+    459 -> 1133 [label=1,color=red];\
+    459 -> 1133 [label=3\
+                ,color=orange];\
+    460 -> 177 [label=2,color=red];\
+    460 -> 215 [label=2\
+               ,color=purple];\
+    460 -> 460 [label=3,color=red];\
+    460 -> 460 [label=2,color=navy];\
+    460 -> 460 [label=31\
+               ,color=purple];\
+    460 -> 527 [label=1,color=red];\
+    460 -> 587 [label=1,color=red];\
+    460 -> 837 [label=8,color=red];\
+    460 -> 931 [label=1,color=red];\
+    460 -> 1111 [label=2\
+                ,color=purple];\
+    460 -> 1133 [label=4\
+                ,color=purple];\
+    460 -> 1133 [label=2,color=red];\
+    460 -> 1133 [label=4\
+                ,color=orange];\
+    472 -> 472 [label=2,color=navy];\
+    472 -> 472 [label=11,color=red];\
+    477 -> 207 [label=1,color=red];\
+    477 -> 220 [label=1,color=navy];\
+    477 -> 220 [label=1\
+               ,color=purple];\
+    477 -> 477 [label=1,color=navy];\
+    477 -> 477 [label=1\
+               ,color=orange];\
+    477 -> 884 [label=1\
+               ,color=orange];\
+    477 -> 884 [label=1,color=navy];\
+    477 -> 884 [label=1\
+               ,color=purple];\
+    477 -> 1005 [label=1\
+                ,color=navy];\
+    477 -> 1005 [label=1\
+                ,color=purple];\
+    477 -> 1072 [label=1,color=red];\
+    477 -> 1133 [label=5\
+                ,color=orange];\
+    477 -> 1133 [label=1,color=red];\
+    480 -> 480 [label=4\
+               ,color=purple];\
+    480 -> 480 [label=1\
+               ,color=orange];\
+    480 -> 859 [label=2\
+               ,color=purple];\
+    488 -> 79 [label=1,color=red];\
+    488 -> 391 [label=2,color=red];\
+    488 -> 488 [label=5\
+               ,color=orange];\
+    488 -> 488 [label=4\
+               ,color=purple];\
+    488 -> 534 [label=1,color=red];\
+    488 -> 837 [label=1,color=red];\
+    488 -> 1008 [label=2,color=red];\
+    488 -> 1072 [label=1,color=red];\
+    497 -> 158 [label=1,color=red];\
+    497 -> 207 [label=1,color=red];\
+    497 -> 215 [label=2,color=red];\
+    497 -> 277 [label=1,color=navy];\
+    497 -> 277 [label=2,color=red];\
+    497 -> 497 [label=80\
+               ,color=purple];\
+    497 -> 497 [label=1,color=red];\
+    497 -> 497 [label=15\
+               ,color=orange];\
+    497 -> 527 [label=14,color=red];\
+    497 -> 527 [label=1\
+               ,color=orange];\
+    497 -> 603 [label=1\
+               ,color=purple];\
+    497 -> 603 [label=2,color=navy];\
+    497 -> 608 [label=3\
+               ,color=orange];\
+    497 -> 1072 [label=4,color=red];\
+    497 -> 1107 [label=1,color=red];\
+    497 -> 1124 [label=2,color=red];\
+    497 -> 1124 [label=1\
+                ,color=purple];\
+    497 -> 1133 [label=11\
+                ,color=orange];\
+    497 -> 1133 [label=2,color=red];\
+    497 -> 1133 [label=3\
+                ,color=purple];\
+    497 -> 1153 [label=1\
+                ,color=orange];\
+    518 -> 518 [label=2,color=red];\
+    520 -> 274 [label=1,color=red];\
+    520 -> 520 [label=8\
+               ,color=purple];\
+    520 -> 527 [label=1\
+               ,color=orange];\
+    520 -> 527 [label=1,color=red];\
+    520 -> 527 [label=1\
+               ,color=purple];\
+    520 -> 1072 [label=1\
+                ,color=navy];\
+    520 -> 1130 [label=1\
+                ,color=orange];\
+    520 -> 1130 [label=1,color=red];\
+    524 -> 524 [label=4\
+               ,color=purple];\
+    524 -> 527 [label=2,color=red];\
+    524 -> 931 [label=1,color=red];\
+    526 -> 526 [label=3\
+               ,color=purple];\
+    527 -> 527 [label=1\
+               ,color=orange];\
+    527 -> 527 [label=2,color=red];\
+    527 -> 527 [label=7\
+               ,color=purple];\
+    527 -> 587 [label=1,color=red];\
+    527 -> 876 [label=1,color=red];\
+    532 -> 532 [label=13\
+               ,color=purple];\
+    532 -> 1072 [label=1,color=red];\
+    532 -> 1124 [label=2,color=red];\
+    533 -> 533 [label=2\
+               ,color=purple];\
+    533 -> 587 [label=1,color=red];\
+    533 -> 608 [label=2\
+               ,color=orange];\
+    533 -> 837 [label=1,color=red];\
+    533 -> 1133 [label=3\
+                ,color=orange];\
+    533 -> 1133 [label=3,color=red];\
+    534 -> 534 [label=1\
+               ,color=orange];\
+    534 -> 534 [label=1,color=red];\
+    534 -> 534 [label=4\
+               ,color=purple];\
+    538 -> 538 [label=45,color=red];\
+    538 -> 538 [label=5\
+               ,color=purple];\
+    546 -> 527 [label=2\
+               ,color=purple];\
+    546 -> 527 [label=5,color=red];\
+    546 -> 546 [label=8\
+               ,color=purple];\
+    546 -> 546 [label=4\
+               ,color=orange];\
+    546 -> 546 [label=1,color=navy];\
+    546 -> 546 [label=3\
+               ,color=black];\
+    546 -> 587 [label=16,color=red];\
+    546 -> 859 [label=12\
+               ,color=purple];\
+    546 -> 1124 [label=1,color=red];\
+    561 -> 527 [label=4,color=red];\
+    561 -> 561 [label=5\
+               ,color=purple];\
+    561 -> 561 [label=1,color=red];\
+    561 -> 561 [label=1\
+               ,color=orange];\
+    561 -> 1124 [label=1,color=red];\
+    564 -> 564 [label=7\
+               ,color=black];\
+    564 -> 564 [label=1,color=red];\
+    564 -> 564 [label=1,color=navy];\
+    564 -> 564 [label=1\
+               ,color=orange];\
+    564 -> 564 [label=20\
+               ,color=purple];\
+    564 -> 966 [label=1\
+               ,color=purple];\
+    564 -> 1124 [label=1,color=red];\
+    564 -> 1130 [label=1\
+                ,color=purple];\
+    564 -> 1130 [label=1\
+                ,color=orange];\
+    581 -> 581 [label=3\
+               ,color=purple];\
+    581 -> 587 [label=1,color=red];\
+    581 -> 931 [label=1,color=red];\
+    581 -> 1133 [label=1,color=red];\
+    584 -> 584 [label=2,color=red];\
+    584 -> 584 [label=2\
+               ,color=orange];\
+    587 -> 527 [label=1,color=red];\
+    587 -> 587 [label=4,color=red];\
+    587 -> 587 [label=1\
+               ,color=purple];\
+    595 -> 595 [label=4\
+               ,color=purple];\
+    597 -> 250 [label=1,color=red];\
+    598 -> 534 [label=1,color=red];\
+    598 -> 534 [label=1\
+               ,color=orange];\
+    598 -> 598 [label=2\
+               ,color=orange];\
+    598 -> 598 [label=1\
+               ,color=purple];\
+    602 -> 602 [label=3\
+               ,color=purple];\
+    603 -> 527 [label=1,color=red];\
+    603 -> 587 [label=1,color=red];\
+    603 -> 603 [label=1\
+               ,color=orange];\
+    603 -> 603 [label=2\
+               ,color=purple];\
+    603 -> 829 [label=3\
+               ,color=purple];\
+    603 -> 859 [label=7\
+               ,color=purple];\
+    603 -> 859 [label=1\
+               ,color=orange];\
+    603 -> 1072 [label=1,color=red];\
+    606 -> 564 [label=1,color=navy];\
+    606 -> 603 [label=1,color=navy];\
+    606 -> 606 [label=16\
+               ,color=purple];\
+    606 -> 837 [label=3,color=red];\
+    606 -> 1072 [label=1\
+                ,color=orange];\
+    606 -> 1133 [label=2\
+                ,color=orange];\
+    606 -> 1133 [label=1,color=red];\
+    608 -> 154 [label=2,color=red];\
+    608 -> 177 [label=1,color=red];\
+    608 -> 215 [label=2,color=red];\
+    608 -> 261 [label=1\
+               ,color=purple];\
+    608 -> 261 [label=1\
+               ,color=orange];\
+    608 -> 269 [label=1,color=red];\
+    608 -> 274 [label=1,color=red];\
+    608 -> 391 [label=1,color=red];\
+    608 -> 524 [label=1,color=navy];\
+    608 -> 524 [label=1\
+               ,color=orange];\
+    608 -> 587 [label=2,color=red];\
+    608 -> 608 [label=25\
+               ,color=orange];\
+    608 -> 608 [label=19,color=red];\
+    608 -> 608 [label=21\
+               ,color=purple];\
+    608 -> 809 [label=3\
+               ,color=orange];\
+    608 -> 809 [label=1,color=navy];\
+    608 -> 809 [label=3\
+               ,color=purple];\
+    608 -> 876 [label=2,color=red];\
+    608 -> 1124 [label=1\
+                ,color=orange];\
+    608 -> 1133 [label=15\
+                ,color=orange];\
+    608 -> 1133 [label=1\
+                ,color=navy];\
+    608 -> 1133 [label=45\
+                ,color=red];\
+    608 -> 1133 [label=11\
+                ,color=purple];\
+    608 -> 1146 [label=1,color=red];\
+    652 -> 652 [label=1\
+               ,color=purple];\
+    653 -> 653 [label=2\
+               ,color=purple];\
+    653 -> 837 [label=2,color=red];\
+    653 -> 1072 [label=2,color=red];\
+    655 -> 250 [label=1,color=red];\
+    656 -> 527 [label=5,color=red];\
+    656 -> 656 [label=9\
+               ,color=purple];\
+    656 -> 656 [label=4\
+               ,color=orange];\
+    656 -> 1124 [label=1,color=red];\
+    664 -> 664 [label=4\
+               ,color=orange];\
+    664 -> 664 [label=4\
+               ,color=purple];\
+    664 -> 693 [label=1\
+               ,color=orange];\
+    664 -> 693 [label=1\
+               ,color=purple];\
+    664 -> 943 [label=2,color=red];\
+    664 -> 1133 [label=1\
+                ,color=purple];\
+    664 -> 1133 [label=7,color=red];\
+    664 -> 1133 [label=1\
+                ,color=orange];\
+    670 -> 158 [label=1,color=red];\
+    670 -> 402 [label=2\
+               ,color=orange];\
+    670 -> 402 [label=1,color=navy];\
+    670 -> 587 [label=8,color=red];\
+    670 -> 670 [label=1\
+               ,color=orange];\
+    670 -> 670 [label=1,color=navy];\
+    670 -> 670 [label=1,color=red];\
+    670 -> 670 [label=5\
+               ,color=purple];\
+    670 -> 773 [label=7,color=red];\
+    670 -> 965 [label=1\
+               ,color=orange];\
+    678 -> 678 [label=1\
+               ,color=orange];\
+    680 -> 98 [label=1\
+              ,color=purple];\
+    680 -> 680 [label=2\
+               ,color=orange];\
+    680 -> 680 [label=10,color=red];\
+    680 -> 680 [label=9\
+               ,color=purple];\
+    693 -> 693 [label=2\
+               ,color=orange];\
+    693 -> 693 [label=3\
+               ,color=purple];\
+    696 -> 696 [label=9\
+               ,color=purple];\
+    696 -> 696 [label=1\
+               ,color=orange];\
+    696 -> 1133 [label=2\
+                ,color=purple];\
+    699 -> 207 [label=1,color=red];\
+    699 -> 587 [label=2,color=red];\
+    699 -> 699 [label=11\
+               ,color=purple];\
+    699 -> 1133 [label=3\
+                ,color=orange];\
+    699 -> 1133 [label=1,color=red];\
+    702 -> 177 [label=1\
+               ,color=orange];\
+    702 -> 257 [label=5,color=red];\
+    702 -> 702 [label=1\
+               ,color=orange];\
+    702 -> 702 [label=6,color=navy];\
+    702 -> 702 [label=8\
+               ,color=purple];\
+    710 -> 177 [label=1,color=red];\
+    710 -> 215 [label=1,color=red];\
+    710 -> 527 [label=5,color=red];\
+    710 -> 587 [label=4,color=red];\
+    710 -> 702 [label=1,color=navy];\
+    710 -> 710 [label=3\
+               ,color=orange];\
+    710 -> 710 [label=4,color=red];\
+    710 -> 710 [label=5\
+               ,color=purple];\
+    710 -> 931 [label=1,color=red];\
+    710 -> 1072 [label=4,color=red];\
+    718 -> 718 [label=15\
+               ,color=purple];\
+    719 -> 177 [label=2,color=red];\
+    719 -> 719 [label=4\
+               ,color=purple];\
+    719 -> 837 [label=1,color=red];\
+    720 -> 720 [label=2\
+               ,color=orange];\
+    720 -> 720 [label=1,color=red];\
+    720 -> 720 [label=14\
+               ,color=purple];\
+    724 -> 154 [label=1,color=red];\
+    724 -> 587 [label=2,color=red];\
+    724 -> 724 [label=4\
+               ,color=purple];\
+    725 -> 154 [label=1,color=red];\
+    725 -> 587 [label=2,color=red];\
+    725 -> 725 [label=4\
+               ,color=purple];\
+    726 -> 726 [label=1\
+               ,color=purple];\
+    726 -> 726 [label=1,color=red];\
+    726 -> 809 [label=1\
+               ,color=purple];\
+    728 -> 728 [label=8\
+               ,color=purple];\
+    728 -> 1124 [label=1,color=red];\
+    730 -> 177 [label=1,color=red];\
+    730 -> 527 [label=1,color=red];\
+    730 -> 730 [label=1,color=red];\
+    730 -> 730 [label=8\
+               ,color=purple];\
+    734 -> 250 [label=1,color=red];\
+    735 -> 735 [label=6\
+               ,color=purple];\
+    735 -> 859 [label=3\
+               ,color=purple];\
+    739 -> 527 [label=4,color=red];\
+    739 -> 587 [label=2,color=red];\
+    739 -> 739 [label=2\
+               ,color=black];\
+    739 -> 739 [label=4\
+               ,color=orange];\
+    739 -> 739 [label=19\
+               ,color=purple];\
+    739 -> 760 [label=4,color=red];\
+    739 -> 760 [label=1,color=navy];\
+    739 -> 760 [label=2\
+               ,color=purple];\
+    739 -> 859 [label=1,color=red];\
+    749 -> 749 [label=7\
+               ,color=orange];\
+    749 -> 749 [label=2,color=navy];\
+    749 -> 749 [label=13\
+               ,color=purple];\
+    749 -> 1072 [label=7,color=red];\
+    749 -> 1124 [label=1,color=red];\
+    760 -> 760 [label=1\
+               ,color=orange];\
+    760 -> 760 [label=1,color=red];\
+    760 -> 760 [label=5\
+               ,color=purple];\
+    763 -> 98 [label=3\
+              ,color=purple];\
+    763 -> 215 [label=1,color=red];\
+    763 -> 527 [label=1,color=red];\
+    763 -> 763 [label=4\
+               ,color=purple];\
+    763 -> 763 [label=4\
+               ,color=orange];\
+    763 -> 1146 [label=1,color=red];\
+    770 -> 79 [label=1,color=red];\
+    770 -> 391 [label=1,color=red];\
+    770 -> 534 [label=1,color=red];\
+    770 -> 770 [label=3\
+               ,color=purple];\
+    773 -> 769 [label=1\
+               ,color=orange];\
+    773 -> 773 [label=2\
+               ,color=orange];\
+    773 -> 773 [label=6,color=red];\
+    773 -> 773 [label=17\
+               ,color=purple];\
+    786 -> 534 [label=1\
+               ,color=orange];\
+    786 -> 534 [label=1,color=red];\
+    786 -> 786 [label=7\
+               ,color=purple];\
+    791 -> 154 [label=1,color=red];\
+    791 -> 791 [label=1\
+               ,color=purple];\
+    791 -> 1133 [label=1\
+                ,color=purple];\
+    791 -> 1133 [label=1,color=red];\
+    791 -> 1133 [label=4\
+                ,color=orange];\
+    792 -> 792 [label=1\
+               ,color=purple];\
+    793 -> 154 [label=1,color=red];\
+    793 -> 527 [label=1,color=red];\
+    793 -> 538 [label=5,color=red];\
+    793 -> 538 [label=2,color=navy];\
+    793 -> 587 [label=43,color=red];\
+    793 -> 771 [label=1,color=navy];\
+    793 -> 793 [label=3\
+               ,color=orange];\
+    793 -> 793 [label=1,color=navy];\
+    793 -> 793 [label=29\
+               ,color=purple];\
+    793 -> 876 [label=3,color=red];\
+    793 -> 911 [label=1\
+               ,color=orange];\
+    793 -> 1133 [label=5\
+                ,color=orange];\
+    793 -> 1133 [label=1,color=red];\
+    809 -> 274 [label=1,color=red];\
+    809 -> 809 [label=14\
+               ,color=purple];\
+    809 -> 859 [label=4\
+               ,color=purple];\
+    809 -> 859 [label=1\
+               ,color=orange];\
+    809 -> 876 [label=1,color=red];\
+    809 -> 931 [label=1,color=red];\
+    809 -> 1133 [label=2,color=red];\
+    809 -> 1133 [label=1\
+                ,color=orange];\
+    809 -> 1153 [label=1\
+                ,color=orange];\
+    813 -> 527 [label=2,color=red];\
+    814 -> 814 [label=4\
+               ,color=orange];\
+    814 -> 814 [label=14,color=red];\
+    814 -> 814 [label=13\
+               ,color=purple];\
+    828 -> 250 [label=1,color=red];\
+    828 -> 1072 [label=1\
+                ,color=purple];\
+    829 -> 79 [label=1,color=red];\
+    829 -> 587 [label=4,color=red];\
+    829 -> 603 [label=2\
+               ,color=purple];\
+    829 -> 829 [label=22\
+               ,color=purple];\
+    829 -> 829 [label=1,color=navy];\
+    829 -> 829 [label=1\
+               ,color=orange];\
+    829 -> 1072 [label=2,color=red];\
+    834 -> 834 [label=1\
+               ,color=orange];\
+    834 -> 834 [label=5\
+               ,color=purple];\
+    836 -> 836 [label=2\
+               ,color=purple];\
+    836 -> 1133 [label=5\
+                ,color=orange];\
+    836 -> 1133 [label=1,color=red];\
+    837 -> 837 [label=6\
+               ,color=purple];\
+    837 -> 837 [label=1,color=red];\
+    837 -> 1111 [label=1\
+                ,color=purple];\
+    840 -> 215 [label=2,color=red];\
+    840 -> 527 [label=1\
+               ,color=orange];\
+    840 -> 527 [label=1,color=red];\
+    840 -> 702 [label=1\
+               ,color=orange];\
+    840 -> 840 [label=25\
+               ,color=purple];\
+    840 -> 840 [label=2,color=navy];\
+    840 -> 840 [label=1\
+               ,color=orange];\
+    840 -> 1133 [label=1,color=red];\
+    840 -> 1133 [label=5\
+                ,color=orange];\
+    840 -> 1153 [label=1\
+                ,color=orange];\
+    845 -> 837 [label=3,color=red];\
+    845 -> 845 [label=7\
+               ,color=purple];\
+    845 -> 845 [label=8\
+               ,color=orange];\
+    845 -> 845 [label=3\
+               ,color=black];\
+    845 -> 853 [label=1\
+               ,color=orange];\
+    845 -> 1107 [label=1,color=red];\
+    845 -> 1153 [label=1\
+                ,color=orange];\
+    853 -> 853 [label=2\
+               ,color=orange];\
+    853 -> 853 [label=8\
+               ,color=purple];\
+    859 -> 154 [label=2,color=red];\
+    859 -> 859 [label=14\
+               ,color=purple];\
+    859 -> 859 [label=2,color=red];\
+    859 -> 859 [label=1,color=navy];\
+    859 -> 859 [label=6\
+               ,color=orange];\
+    859 -> 876 [label=2,color=red];\
+    859 -> 1133 [label=4\
+                ,color=orange];\
+    859 -> 1133 [label=1,color=red];\
+    859 -> 1133 [label=2\
+                ,color=purple];\
+    859 -> 1153 [label=1\
+                ,color=orange];\
+    874 -> 155 [label=1,color=red];\
+    874 -> 874 [label=1\
+               ,color=orange];\
+    876 -> 876 [label=16\
+               ,color=purple];\
+    880 -> 587 [label=2,color=red];\
+    880 -> 880 [label=38,color=red];\
+    883 -> 534 [label=1,color=red];\
+    883 -> 837 [label=2,color=red];\
+    883 -> 883 [label=12\
+               ,color=purple];\
+    884 -> 884 [label=16\
+               ,color=purple];\
+    887 -> 250 [label=1\
+               ,color=orange];\
+    887 -> 250 [label=1\
+               ,color=purple];\
+    887 -> 274 [label=1\
+               ,color=orange];\
+    887 -> 274 [label=1\
+               ,color=purple];\
+    887 -> 527 [label=3,color=red];\
+    887 -> 587 [label=4,color=red];\
+    887 -> 730 [label=1,color=red];\
+    887 -> 730 [label=2\
+               ,color=orange];\
+    887 -> 876 [label=1,color=red];\
+    887 -> 887 [label=18\
+               ,color=purple];\
+    887 -> 887 [label=6\
+               ,color=orange];\
+    887 -> 1072 [label=1,color=red];\
+    900 -> 900 [label=6\
+               ,color=purple];\
+    902 -> 177 [label=1,color=red];\
+    902 -> 274 [label=1,color=red];\
+    902 -> 527 [label=2,color=red];\
+    902 -> 902 [label=6\
+               ,color=orange];\
+    902 -> 902 [label=3,color=red];\
+    902 -> 902 [label=5\
+               ,color=purple];\
+    902 -> 974 [label=2\
+               ,color=purple];\
+    902 -> 1072 [label=1,color=red];\
+    911 -> 98 [label=1\
+              ,color=purple];\
+    911 -> 534 [label=1,color=red];\
+    911 -> 587 [label=1,color=red];\
+    911 -> 768 [label=1\
+               ,color=orange];\
+    911 -> 859 [label=2\
+               ,color=purple];\
+    911 -> 876 [label=1,color=red];\
+    911 -> 911 [label=9\
+               ,color=purple];\
+    911 -> 911 [label=1\
+               ,color=orange];\
+    911 -> 931 [label=1,color=red];\
+    920 -> 79 [label=1,color=red];\
+    920 -> 391 [label=1\
+               ,color=orange];\
+    920 -> 391 [label=1,color=red];\
+    920 -> 534 [label=2,color=red];\
+    920 -> 534 [label=1,color=navy];\
+    920 -> 534 [label=6\
+               ,color=purple];\
+    920 -> 678 [label=2,color=red];\
+    920 -> 876 [label=4,color=red];\
+    920 -> 920 [label=17\
+               ,color=purple];\
+    920 -> 931 [label=1,color=red];\
+    922 -> 207 [label=1,color=red];\
+    922 -> 534 [label=3,color=red];\
+    922 -> 534 [label=2,color=navy];\
+    922 -> 534 [label=3\
+               ,color=purple];\
+    924 -> 924 [label=1\
+               ,color=purple];\
+    925 -> 749 [label=1,color=navy];\
+    925 -> 925 [label=1\
+               ,color=purple];\
+    926 -> 154 [label=1,color=red];\
+    926 -> 587 [label=2,color=red];\
+    926 -> 926 [label=11\
+               ,color=purple];\
+    926 -> 1153 [label=1\
+                ,color=orange];\
+    931 -> 177 [label=3,color=red];\
+    931 -> 182 [label=2\
+               ,color=orange];\
+    931 -> 534 [label=1,color=red];\
+    931 -> 931 [label=2\
+               ,color=orange];\
+    931 -> 931 [label=10,color=red];\
+    931 -> 931 [label=10\
+               ,color=purple];\
+    938 -> 269 [label=3,color=red];\
+    938 -> 269 [label=4\
+               ,color=purple];\
+    938 -> 277 [label=1,color=red];\
+    938 -> 277 [label=1\
+               ,color=orange];\
+    938 -> 391 [label=2,color=red];\
+    938 -> 391 [label=1\
+               ,color=orange];\
+    938 -> 938 [label=13\
+               ,color=purple];\
+    938 -> 1111 [label=2\
+                ,color=purple];\
+    944 -> 46 [label=1\
+              ,color=orange];\
+    944 -> 215 [label=1,color=red];\
+    944 -> 587 [label=1,color=red];\
+    944 -> 876 [label=4,color=red];\
+    944 -> 944 [label=19\
+               ,color=purple];\
+    944 -> 944 [label=9,color=navy];\
+    944 -> 944 [label=15\
+               ,color=orange];\
+    944 -> 1111 [label=5\
+                ,color=purple];\
+    964 -> 250 [label=1,color=red];\
+    965 -> 965 [label=1\
+               ,color=purple];\
+    966 -> 966 [label=9\
+               ,color=purple];\
+    966 -> 966 [label=7\
+               ,color=orange];\
+    966 -> 1124 [label=1,color=red];\
+    974 -> 13 [label=1,color=navy];\
+    974 -> 460 [label=1\
+               ,color=orange];\
+    974 -> 608 [label=1\
+               ,color=purple];\
+    974 -> 608 [label=3\
+               ,color=orange];\
+    974 -> 809 [label=1\
+               ,color=purple];\
+    974 -> 809 [label=1,color=navy];\
+    974 -> 837 [label=4,color=red];\
+    974 -> 853 [label=1\
+               ,color=orange];\
+    974 -> 876 [label=9,color=red];\
+    974 -> 974 [label=12\
+               ,color=purple];\
+    974 -> 974 [label=1,color=red];\
+    974 -> 974 [label=12\
+               ,color=orange];\
+    974 -> 1072 [label=1\
+                ,color=orange];\
+    974 -> 1111 [label=1\
+                ,color=orange];\
+    974 -> 1124 [label=1\
+                ,color=orange];\
+    974 -> 1124 [label=1,color=red];\
+    974 -> 1133 [label=6,color=red];\
+    974 -> 1133 [label=6\
+                ,color=orange];\
+    974 -> 1146 [label=1,color=red];\
+    974 -> 1153 [label=1\
+                ,color=purple];\
+    974 -> 1153 [label=1\
+                ,color=orange];\
+    998 -> 411 [label=1\
+               ,color=orange];\
+    998 -> 902 [label=1,color=red];\
+    998 -> 902 [label=2\
+               ,color=orange];\
+    998 -> 998 [label=3\
+               ,color=orange];\
+    998 -> 998 [label=1\
+               ,color=purple];\
+    1002 -> 274 [label=2,color=red];\
+    1002 -> 527 [label=3,color=red];\
+    1002 -> 1002 [label=5\
+                 ,color=purple];\
+    1002 -> 1002 [label=1\
+                 ,color=orange];\
+    1002 -> 1072 [label=1\
+                 ,color=red];\
+    1004 -> 79 [label=1,color=red];\
+    1004 -> 1004 [label=4\
+                 ,color=purple];\
+    1005 -> 1005 [label=7\
+                 ,color=purple];\
+    1006 -> 250 [label=1,color=red];\
+    1007 -> 13 [label=1\
+               ,color=orange];\
+    1007 -> 1007 [label=3\
+                 ,color=purple];\
+    1008 -> 1072 [label=2\
+                 ,color=red];\
+    1010 -> 760 [label=8,color=red];\
+    1010 -> 1010 [label=108\
+                 ,color=purple];\
+    1010 -> 1010 [label=4\
+                 ,color=orange];\
+    1010 -> 1010 [label=6\
+                 ,color=navy];\
+    1010 -> 1010 [label=24\
+                 ,color=red];\
+    1010 -> 1010 [label=13\
+                 ,color=black];\
+    1010 -> 1072 [label=1\
+                 ,color=purple];\
+    1056 -> 527 [label=1,color=red];\
+    1056 -> 587 [label=1,color=red];\
+    1056 -> 773 [label=1,color=red];\
+    1056 -> 1056 [label=28\
+                 ,color=purple];\
+    1056 -> 1056 [label=2\
+                 ,color=red];\
+    1056 -> 1056 [label=1\
+                 ,color=orange];\
+    1056 -> 1072 [label=2\
+                 ,color=red];\
+    1061 -> 1061 [label=1\
+                 ,color=orange];\
+    1061 -> 1061 [label=1\
+                 ,color=purple];\
+    1063 -> 1063 [label=1\
+                 ,color=purple];\
+    1064 -> 1133 [label=2\
+                 ,color=orange];\
+    1064 -> 1133 [label=1\
+                 ,color=red];\
+    1065 -> 246 [label=1,color=red];\
+    1065 -> 257 [label=2,color=red];\
+    1065 -> 261 [label=1\
+                ,color=orange];\
+    1065 -> 261 [label=1\
+                ,color=purple];\
+    1065 -> 837 [label=4,color=red];\
+    1065 -> 1065 [label=10\
+                 ,color=purple];\
+    1065 -> 1065 [label=1\
+                 ,color=orange];\
+    1065 -> 1111 [label=2\
+                 ,color=purple];\
+    1072 -> 86 [label=1\
+               ,color=orange];\
+    1072 -> 158 [label=5,color=red];\
+    1072 -> 177 [label=1,color=red];\
+    1072 -> 207 [label=7,color=red];\
+    1072 -> 207 [label=1\
+                ,color=orange];\
+    1072 -> 215 [label=2\
+                ,color=orange];\
+    1072 -> 269 [label=1,color=red];\
+    1072 -> 274 [label=1,color=red];\
+    1072 -> 274 [label=1\
+                ,color=orange];\
+    1072 -> 282 [label=1\
+                ,color=orange];\
+    1072 -> 428 [label=1\
+                ,color=navy];\
+    1072 -> 527 [label=9,color=red];\
+    1072 -> 527 [label=2\
+                ,color=orange];\
+    1072 -> 584 [label=1,color=red];\
+    1072 -> 584 [label=1\
+                ,color=orange];\
+    1072 -> 587 [label=2,color=red];\
+    1072 -> 876 [label=1\
+                ,color=orange];\
+    1072 -> 876 [label=4,color=red];\
+    1072 -> 1072 [label=1\
+                 ,color=black];\
+    1072 -> 1072 [label=2\
+                 ,color=red];\
+    1072 -> 1072 [label=2\
+                 ,color=navy];\
+    1072 -> 1072 [label=13\
+                 ,color=orange];\
+    1072 -> 1072 [label=15\
+                 ,color=purple];\
+    1072 -> 1124 [label=2\
+                 ,color=orange];\
+    1072 -> 1153 [label=1\
+                 ,color=orange];\
+    1094 -> 1094 [label=31\
+                 ,color=purple];\
+    1107 -> 584 [label=1,color=red];\
+    1107 -> 1094 [label=7\
+                 ,color=red];\
+    1111 -> 177 [label=1,color=red];\
+    1111 -> 215 [label=1,color=red];\
+    1111 -> 587 [label=3,color=red];\
+    1111 -> 837 [label=1,color=red];\
+    1111 -> 853 [label=2\
+                ,color=orange];\
+    1111 -> 859 [label=2\
+                ,color=purple];\
+    1111 -> 1111 [label=4\
+                 ,color=orange];\
+    1111 -> 1111 [label=15\
+                 ,color=purple];\
+    1118 -> 207 [label=1,color=red];\
+    1118 -> 277 [label=1\
+                ,color=orange];\
+    1118 -> 277 [label=1,color=red];\
+    1118 -> 534 [label=1,color=red];\
+    1118 -> 534 [label=1\
+                ,color=navy];\
+    1118 -> 1118 [label=4\
+                 ,color=purple];\
+    1121 -> 534 [label=1,color=red];\
+    1121 -> 1121 [label=1\
+                 ,color=orange];\
+    1121 -> 1121 [label=1\
+                 ,color=purple];\
+    1121 -> 1124 [label=2\
+                 ,color=red];\
+    1121 -> 1124 [label=1\
+                 ,color=purple];\
+    1124 -> 1124 [label=9\
+                 ,color=red];\
+    1124 -> 1124 [label=9\
+                 ,color=purple];\
+    1130 -> 1130 [label=2\
+                 ,color=purple];\
+    1132 -> 1072 [label=1\
+                 ,color=red];\
+    1133 -> 859 [label=2\
+                ,color=purple];\
+    1133 -> 859 [label=1\
+                ,color=orange];\
+    1133 -> 876 [label=1,color=red];\
+    1133 -> 931 [label=1,color=red];\
+    1133 -> 1133 [label=17\
+                 ,color=orange];\
+    1133 -> 1133 [label=52\
+                 ,color=red];\
+    1133 -> 1133 [label=25\
+                 ,color=purple];\
+    1145 -> 837 [label=1,color=red];\
+    1145 -> 1133 [label=2\
+                 ,color=red];\
+    1145 -> 1133 [label=2\
+                 ,color=orange];\
+    1147 -> 177 [label=1\
+                ,color=orange];\
+    1147 -> 177 [label=2,color=red];\
+    1147 -> 215 [label=1,color=red];\
+    1147 -> 1147 [label=5\
+                 ,color=red];\
+    1147 -> 1147 [label=4\
+                 ,color=purple];\
+    1153 -> 8 [label=1\
+              ,color=orange];\
+    1153 -> 13 [label=1,color=navy];\
+    1153 -> 14 [label=1\
+               ,color=orange];\
+    1153 -> 15 [label=1,color=navy];\
+    1153 -> 20 [label=2\
+               ,color=orange];\
+    1153 -> 20 [label=8,color=navy];\
+    1153 -> 20 [label=4\
+               ,color=purple];\
+    1153 -> 25 [label=1,color=navy];\
+    1153 -> 26 [label=2\
+               ,color=orange];\
+    1153 -> 26 [label=4,color=navy];\
+    1153 -> 30 [label=1\
+               ,color=orange];\
+    1153 -> 30 [label=4,color=navy];\
+    1153 -> 36 [label=5\
+               ,color=orange];\
+    1153 -> 44 [label=2,color=navy];\
+    1153 -> 48 [label=1\
+               ,color=orange];\
+    1153 -> 75 [label=2\
+               ,color=orange];\
+    1153 -> 81 [label=1,color=red];\
+    1153 -> 81 [label=2,color=navy];\
+    1153 -> 88 [label=3\
+               ,color=orange];\
+    1153 -> 88 [label=2,color=red];\
+    1153 -> 98 [label=18\
+               ,color=orange];\
+    1153 -> 98 [label=6,color=navy];\
+    1153 -> 139 [label=1\
+                ,color=orange];\
+    1153 -> 145 [label=1\
+                ,color=orange];\
+    1153 -> 147 [label=4\
+                ,color=orange];\
+    1153 -> 147 [label=4,color=red];\
+    1153 -> 150 [label=2\
+                ,color=navy];\
+    1153 -> 152 [label=1,color=red];\
+    1153 -> 152 [label=1\
+                ,color=orange];\
+    1153 -> 154 [label=131\
+                ,color=red];\
+    1153 -> 155 [label=1,color=red];\
+    1153 -> 158 [label=4,color=red];\
+    1153 -> 161 [label=4,color=red];\
+    1153 -> 161 [label=2\
+                ,color=navy];\
+    1153 -> 161 [label=12\
+                ,color=orange];\
+    1153 -> 177 [label=4,color=red];\
+    1153 -> 180 [label=1\
+                ,color=orange];\
+    1153 -> 180 [label=1\
+                ,color=navy];\
+    1153 -> 184 [label=4,color=red];\
+    1153 -> 184 [label=2\
+                ,color=navy];\
+    1153 -> 184 [label=1\
+                ,color=purple];\
+    1153 -> 187 [label=1\
+                ,color=navy];\
+    1153 -> 189 [label=7,color=red];\
+    1153 -> 189 [label=1\
+                ,color=navy];\
+    1153 -> 189 [label=13\
+                ,color=orange];\
+    1153 -> 207 [label=7,color=red];\
+    1153 -> 215 [label=1,color=red];\
+    1153 -> 219 [label=2\
+                ,color=navy];\
+    1153 -> 220 [label=2\
+                ,color=purple];\
+    1153 -> 220 [label=2\
+                ,color=navy];\
+    1153 -> 221 [label=4\
+                ,color=orange];\
+    1153 -> 221 [label=18\
+                ,color=navy];\
+    1153 -> 243 [label=2\
+                ,color=orange];\
+    1153 -> 254 [label=1\
+                ,color=navy];\
+    1153 -> 255 [label=1\
+                ,color=orange];\
+    1153 -> 261 [label=5\
+                ,color=orange];\
+    1153 -> 269 [label=2,color=red];\
+    1153 -> 274 [label=1\
+                ,color=navy];\
+    1153 -> 274 [label=2,color=red];\
+    1153 -> 277 [label=3\
+                ,color=orange];\
+    1153 -> 277 [label=1\
+                ,color=navy];\
+    1153 -> 277 [label=9,color=red];\
+    1153 -> 282 [label=22\
+                ,color=orange];\
+    1153 -> 282 [label=1\
+                ,color=navy];\
+    1153 -> 282 [label=2\
+                ,color=purple];\
+    1153 -> 376 [label=4\
+                ,color=orange];\
+    1153 -> 379 [label=2\
+                ,color=navy];\
+    1153 -> 388 [label=3\
+                ,color=navy];\
+    1153 -> 391 [label=7,color=red];\
+    1153 -> 394 [label=3\
+                ,color=navy];\
+    1153 -> 394 [label=1\
+                ,color=purple];\
+    1153 -> 397 [label=1\
+                ,color=orange];\
+    1153 -> 398 [label=1\
+                ,color=navy];\
+    1153 -> 399 [label=1\
+                ,color=purple];\
+    1153 -> 399 [label=4\
+                ,color=navy];\
+    1153 -> 399 [label=1\
+                ,color=orange];\
+    1153 -> 402 [label=1\
+                ,color=navy];\
+    1153 -> 411 [label=1\
+                ,color=navy];\
+    1153 -> 411 [label=1\
+                ,color=orange];\
+    1153 -> 429 [label=1\
+                ,color=orange];\
+    1153 -> 433 [label=2\
+                ,color=navy];\
+    1153 -> 437 [label=1\
+                ,color=navy];\
+    1153 -> 438 [label=1\
+                ,color=purple];\
+    1153 -> 438 [label=5,color=red];\
+    1153 -> 438 [label=4\
+                ,color=navy];\
+    1153 -> 438 [label=5\
+                ,color=orange];\
+    1153 -> 446 [label=1\
+                ,color=orange];\
+    1153 -> 447 [label=1\
+                ,color=orange];\
+    1153 -> 448 [label=1\
+                ,color=navy];\
+    1153 -> 459 [label=1\
+                ,color=orange];\
+    1153 -> 460 [label=3,color=red];\
+    1153 -> 460 [label=4\
+                ,color=navy];\
+    1153 -> 460 [label=2\
+                ,color=orange];\
+    1153 -> 472 [label=1\
+                ,color=navy];\
+    1153 -> 477 [label=1\
+                ,color=navy];\
+    1153 -> 480 [label=1,color=red];\
+    1153 -> 480 [label=2\
+                ,color=orange];\
+    1153 -> 488 [label=10\
+                ,color=orange];\
+    1153 -> 488 [label=5\
+                ,color=navy];\
+    1153 -> 488 [label=1,color=red];\
+    1153 -> 497 [label=1,color=red];\
+    1153 -> 497 [label=1\
+                ,color=navy];\
+    1153 -> 520 [label=3\
+                ,color=orange];\
+    1153 -> 526 [label=2,color=red];\
+    1153 -> 527 [label=1\
+                ,color=orange];\
+    1153 -> 527 [label=40\
+                ,color=red];\
+    1153 -> 533 [label=1\
+                ,color=orange];\
+    1153 -> 534 [label=2\
+                ,color=purple];\
+    1153 -> 534 [label=1\
+                ,color=navy];\
+    1153 -> 534 [label=2,color=red];\
+    1153 -> 546 [label=1\
+                ,color=orange];\
+    1153 -> 546 [label=4\
+                ,color=navy];\
+    1153 -> 561 [label=2\
+                ,color=orange];\
+    1153 -> 561 [label=2,color=red];\
+    1153 -> 564 [label=3,color=red];\
+    1153 -> 564 [label=6\
+                ,color=navy];\
+    1153 -> 564 [label=2\
+                ,color=orange];\
+    1153 -> 581 [label=1\
+                ,color=navy];\
+    1153 -> 581 [label=2\
+                ,color=orange];\
+    1153 -> 584 [label=1,color=red];\
+    1153 -> 587 [label=96\
+                ,color=red];\
+    1153 -> 595 [label=1\
+                ,color=navy];\
+    1153 -> 597 [label=1\
+                ,color=orange];\
+    1153 -> 598 [label=3\
+                ,color=orange];\
+    1153 -> 602 [label=1\
+                ,color=orange];\
+    1153 -> 603 [label=2\
+                ,color=navy];\
+    1153 -> 608 [label=4,color=red];\
+    1153 -> 608 [label=1\
+                ,color=navy];\
+    1153 -> 608 [label=31\
+                ,color=orange];\
+    1153 -> 652 [label=2\
+                ,color=orange];\
+    1153 -> 655 [label=1\
+                ,color=orange];\
+    1153 -> 656 [label=4\
+                ,color=orange];\
+    1153 -> 656 [label=29\
+                ,color=navy];\
+    1153 -> 656 [label=13\
+                ,color=red];\
+    1153 -> 656 [label=4\
+                ,color=purple];\
+    1153 -> 664 [label=2\
+                ,color=orange];\
+    1153 -> 670 [label=1\
+                ,color=purple];\
+    1153 -> 670 [label=14\
+                ,color=red];\
+    1153 -> 670 [label=5\
+                ,color=navy];\
+    1153 -> 670 [label=21\
+                ,color=orange];\
+    1153 -> 680 [label=2\
+                ,color=orange];\
+    1153 -> 680 [label=31\
+                ,color=red];\
+    1153 -> 696 [label=2,color=red];\
+    1153 -> 699 [label=3\
+                ,color=navy];\
+    1153 -> 699 [label=2\
+                ,color=purple];\
+    1153 -> 702 [label=8\
+                ,color=orange];\
+    1153 -> 720 [label=1\
+                ,color=orange];\
+    1153 -> 720 [label=2,color=red];\
+    1153 -> 724 [label=1\
+                ,color=navy];\
+    1153 -> 726 [label=3\
+                ,color=orange];\
+    1153 -> 726 [label=3\
+                ,color=purple];\
+    1153 -> 729 [label=1\
+                ,color=navy];\
+    1153 -> 734 [label=1\
+                ,color=orange];\
+    1153 -> 735 [label=1\
+                ,color=orange];\
+    1153 -> 735 [label=1\
+                ,color=navy];\
+    1153 -> 735 [label=7,color=red];\
+    1153 -> 735 [label=2\
+                ,color=purple];\
+    1153 -> 749 [label=3\
+                ,color=purple];\
+    1153 -> 749 [label=9\
+                ,color=navy];\
+    1153 -> 749 [label=1\
+                ,color=orange];\
+    1153 -> 763 [label=2\
+                ,color=orange];\
+    1153 -> 763 [label=1\
+                ,color=navy];\
+    1153 -> 763 [label=3\
+                ,color=purple];\
+    1153 -> 770 [label=1\
+                ,color=orange];\
+    1153 -> 772 [label=1\
+                ,color=orange];\
+    1153 -> 773 [label=109\
+                ,color=red];\
+    1153 -> 786 [label=6\
+                ,color=orange];\
+    1153 -> 791 [label=1\
+                ,color=navy];\
+    1153 -> 793 [label=10\
+                ,color=orange];\
+    1153 -> 793 [label=3\
+                ,color=navy];\
+    1153 -> 793 [label=1\
+                ,color=black];\
+    1153 -> 813 [label=1\
+                ,color=navy];\
+    1153 -> 814 [label=1\
+                ,color=orange];\
+    1153 -> 828 [label=1\
+                ,color=orange];\
+    1153 -> 834 [label=6\
+                ,color=purple];\
+    1153 -> 834 [label=1\
+                ,color=navy];\
+    1153 -> 836 [label=1\
+                ,color=navy];\
+    1153 -> 837 [label=7,color=red];\
+    1153 -> 840 [label=2\
+                ,color=navy];\
+    1153 -> 845 [label=4\
+                ,color=orange];\
+    1153 -> 853 [label=2\
+                ,color=orange];\
+    1153 -> 859 [label=3\
+                ,color=orange];\
+    1153 -> 859 [label=5\
+                ,color=navy];\
+    1153 -> 859 [label=11\
+                ,color=red];\
+    1153 -> 874 [label=1\
+                ,color=orange];\
+    1153 -> 876 [label=182\
+                ,color=red];\
+    1153 -> 880 [label=1\
+                ,color=orange];\
+    1153 -> 883 [label=1\
+                ,color=navy];\
+    1153 -> 884 [label=6\
+                ,color=purple];\
+    1153 -> 884 [label=3,color=red];\
+    1153 -> 884 [label=5\
+                ,color=navy];\
+    1153 -> 884 [label=4\
+                ,color=orange];\
+    1153 -> 887 [label=8,color=red];\
+    1153 -> 887 [label=2\
+                ,color=navy];\
+    1153 -> 887 [label=3\
+                ,color=orange];\
+    1153 -> 900 [label=1\
+                ,color=navy];\
+    1153 -> 900 [label=1\
+                ,color=orange];\
+    1153 -> 902 [label=7\
+                ,color=orange];\
+    1153 -> 911 [label=4\
+                ,color=orange];\
+    1153 -> 911 [label=1\
+                ,color=navy];\
+    1153 -> 922 [label=2\
+                ,color=orange];\
+    1153 -> 925 [label=1\
+                ,color=navy];\
+    1153 -> 931 [label=9,color=red];\
+    1153 -> 931 [label=1\
+                ,color=navy];\
+    1153 -> 944 [label=2\
+                ,color=orange];\
+    1153 -> 964 [label=1\
+                ,color=navy];\
+    1153 -> 965 [label=2\
+                ,color=orange];\
+    1153 -> 966 [label=2\
+                ,color=navy];\
+    1153 -> 966 [label=2\
+                ,color=orange];\
+    1153 -> 974 [label=18\
+                ,color=orange];\
+    1153 -> 974 [label=1\
+                ,color=navy];\
+    1153 -> 974 [label=2,color=red];\
+    1153 -> 974 [label=2\
+                ,color=purple];\
+    1153 -> 1004 [label=1\
+                 ,color=navy];\
+    1153 -> 1006 [label=1\
+                 ,color=orange];\
+    1153 -> 1010 [label=13\
+                 ,color=purple];\
+    1153 -> 1010 [label=17\
+                 ,color=navy];\
+    1153 -> 1010 [label=9\
+                 ,color=orange];\
+    1153 -> 1056 [label=4\
+                 ,color=orange];\
+    1153 -> 1056 [label=3\
+                 ,color=navy];\
+    1153 -> 1061 [label=3\
+                 ,color=red];\
+    1153 -> 1063 [label=1\
+                 ,color=navy];\
+    1153 -> 1065 [label=3\
+                 ,color=orange];\
+    1153 -> 1072 [label=140\
+                 ,color=orange];\
+    1153 -> 1094 [label=46\
+                 ,color=red];\
+    1153 -> 1094 [label=4\
+                 ,color=navy];\
+    1153 -> 1094 [label=2\
+                 ,color=purple];\
+    1153 -> 1107 [label=16\
+                 ,color=red];\
+    1153 -> 1111 [label=1\
+                 ,color=red];\
+    1153 -> 1111 [label=2\
+                 ,color=navy];\
+    1153 -> 1111 [label=1\
+                 ,color=orange];\
+    1153 -> 1118 [label=3\
+                 ,color=navy];\
+    1153 -> 1118 [label=1\
+                 ,color=purple];\
+    1153 -> 1121 [label=1\
+                 ,color=orange];\
+    1153 -> 1121 [label=1\
+                 ,color=navy];\
+    1153 -> 1121 [label=3\
+                 ,color=red];\
+    1153 -> 1132 [label=1\
+                 ,color=orange];\
+    1153 -> 1133 [label=1\
+                 ,color=purple];\
+    1153 -> 1133 [label=12\
+                 ,color=red];\
+    1153 -> 1133 [label=56\
+                 ,color=orange];\
+    1153 -> 1145 [label=1\
+                 ,color=orange];\
+    1153 -> 1147 [label=5\
+                 ,color=orange];\
+    1153 -> 1153 [label=17\
+                 ,color=black];\
+    1153 -> 1153 [label=1\
+                 ,color=red];\
+    1153 -> 1153 [label=77\
+                 ,color=navy];\
+    1153 -> 1153 [label=286\
+                 ,color=orange];\
+    1153 -> 1153 [label=59\
+                 ,color=purple];\
+}';
+var parsedData = vis.network.convertDot(DOTstring);
+
+var data = {
+  nodes: parsedData.nodes,
+  edges: parsedData.edges
+}
+
+var options = parsedData.options;
+var options = {
+  physics:{
+    maxVelocity: 1
+  }
+}
+// create a network
+var network = new vis.Network(container, data, options);
+</script></body></html>

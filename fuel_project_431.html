@@ -1,0 +1,209 @@
+<html>
+<head>
+    <script type="text/javascript" src="dist/vis.js"></script>
+    <link href="dist/vis.css" rel="stylesheet" type="text/css" />
+
+    <style type="text/css">
+        #mynetwork {
+            width: 1000px;
+            height: 800px;
+            border: 1px solid lightgray;
+        }
+    </style>
+</head>
+<body>
+<div id="mynetwork"></div>
+
+<script type="text/javascript">
+
+
+    // create a network
+    var container = document.getElementById('mynetwork');
+    // provide data in the DOT language
+var DOTstring = 'digraph {\
+    1 [label=zuul];\
+    2 [label=zabbix];\
+    10 [label=venv];\
+    13 [label=uwsgi];\
+    16 [label=transmission];\
+    18 [label=tpi];\
+    21 [label=system];\
+    22 [label=ssh];\
+    28 [label=racks];\
+    30 [label=pxetool];\
+    32 [label=puppet];\
+    38 [label=opentracker];\
+    39 [label=obs_server];\
+    44 [label=lpreports];\
+    45 [label=log_storage];\
+    50 [label=lodgeit];\
+    52 [label=landing_page];\
+    56 [label=jenkins];\
+    60 [label=jeepyb];\
+    62 [label=gerrit];\
+    67 [label=fuel_stats];\
+    74 [label=fuel_project];\
+    129 [label=firewall_defaults];\
+    131 [label=etherpad_lite];\
+    132 [label=docker_registry];\
+    133 [label=django];\
+    134 [label=devopslib];\
+    136 [label=431];\
+    2 -> 2 [label=4,color=black];\
+    2 -> 2 [label=1,color=navy];\
+    2 -> 2 [label=5,color=orange];\
+    2 -> 2 [label=20,color=purple];\
+    2 -> 129 [label=3,color=orange];\
+    2 -> 129 [label=3,color=purple];\
+    10 -> 10 [label=1,color=purple];\
+    10 -> 10 [label=1,color=red];\
+    10 -> 74 [label=1,color=purple];\
+    13 -> 13 [label=1,color=black];\
+    13 -> 13 [label=1,color=navy];\
+    13 -> 13 [label=2,color=purple];\
+    16 -> 16 [label=1,color=orange];\
+    18 -> 18 [label=16\
+             ,color=purple];\
+    21 -> 21 [label=8,color=purple];\
+    22 -> 22 [label=4,color=orange];\
+    22 -> 22 [label=2,color=purple];\
+    22 -> 129 [label=1\
+              ,color=orange];\
+    22 -> 129 [label=1\
+              ,color=purple];\
+    28 -> 28 [label=2,color=purple];\
+    28 -> 133 [label=1,color=red];\
+    30 -> 13 [label=1,color=navy];\
+    30 -> 13 [label=1,color=red];\
+    30 -> 30 [label=5,color=purple];\
+    30 -> 74 [label=1,color=purple];\
+    32 -> 13 [label=1,color=purple];\
+    32 -> 13 [label=1,color=navy];\
+    32 -> 13 [label=1,color=red];\
+    32 -> 32 [label=9,color=purple];\
+    32 -> 32 [label=2,color=red];\
+    32 -> 32 [label=1,color=navy];\
+    32 -> 32 [label=2,color=black];\
+    32 -> 39 [label=1,color=purple];\
+    32 -> 129 [label=1\
+              ,color=orange];\
+    32 -> 129 [label=1\
+              ,color=purple];\
+    38 -> 38 [label=4,color=purple];\
+    38 -> 74 [label=2,color=purple];\
+    39 -> 39 [label=1,color=black];\
+    39 -> 39 [label=3,color=orange];\
+    39 -> 39 [label=28\
+             ,color=purple];\
+    44 -> 13 [label=1,color=red];\
+    44 -> 44 [label=16\
+             ,color=purple];\
+    45 -> 45 [label=3,color=black];\
+    45 -> 133 [label=6\
+              ,color=purple];\
+    50 -> 13 [label=1,color=red];\
+    50 -> 13 [label=1,color=orange];\
+    50 -> 50 [label=4,color=purple];\
+    50 -> 74 [label=1,color=purple];\
+    52 -> 13 [label=1,color=red];\
+    52 -> 52 [label=2,color=black];\
+    52 -> 52 [label=11\
+             ,color=purple];\
+    52 -> 129 [label=2\
+              ,color=orange];\
+    52 -> 129 [label=2\
+              ,color=purple];\
+    56 -> 2 [label=1,color=red];\
+    56 -> 56 [label=3,color=black];\
+    56 -> 56 [label=17\
+             ,color=purple];\
+    56 -> 129 [label=1\
+              ,color=orange];\
+    56 -> 129 [label=1\
+              ,color=purple];\
+    60 -> 60 [label=1,color=orange];\
+    60 -> 60 [label=5,color=purple];\
+    62 -> 60 [label=1,color=purple];\
+    62 -> 60 [label=1,color=orange];\
+    62 -> 62 [label=42\
+             ,color=purple];\
+    67 -> 13 [label=4,color=red];\
+    67 -> 56 [label=1,color=purple];\
+    67 -> 67 [label=5,color=black];\
+    67 -> 67 [label=3,color=navy];\
+    67 -> 67 [label=3,color=red];\
+    67 -> 67 [label=42\
+             ,color=purple];\
+    74 -> 2 [label=3,color=purple];\
+    74 -> 2 [label=4,color=navy];\
+    74 -> 2 [label=10,color=red];\
+    74 -> 10 [label=5,color=red];\
+    74 -> 13 [label=1,color=red];\
+    74 -> 16 [label=1,color=navy];\
+    74 -> 18 [label=3,color=navy];\
+    74 -> 21 [label=1,color=navy];\
+    74 -> 22 [label=1,color=orange];\
+    74 -> 22 [label=3,color=navy];\
+    74 -> 22 [label=5,color=red];\
+    74 -> 28 [label=1,color=red];\
+    74 -> 28 [label=1,color=navy];\
+    74 -> 32 [label=1,color=red];\
+    74 -> 32 [label=2,color=navy];\
+    74 -> 38 [label=1,color=navy];\
+    74 -> 45 [label=1,color=navy];\
+    74 -> 50 [label=1,color=purple];\
+    74 -> 50 [label=1,color=navy];\
+    74 -> 52 [label=3,color=navy];\
+    74 -> 56 [label=5,color=navy];\
+    74 -> 56 [label=22\
+             ,color=purple];\
+    74 -> 62 [label=3,color=navy];\
+    74 -> 62 [label=2,color=purple];\
+    74 -> 67 [label=1,color=navy];\
+    74 -> 67 [label=7,color=purple];\
+    74 -> 74 [label=141\
+             ,color=purple];\
+    74 -> 74 [label=45,color=navy];\
+    74 -> 74 [label=1,color=red];\
+    74 -> 129 [label=4\
+              ,color=purple];\
+    74 -> 129 [label=4\
+              ,color=orange];\
+    74 -> 134 [label=2,color=navy];\
+    129 -> 129 [label=1\
+               ,color=orange];\
+    129 -> 129 [label=2\
+               ,color=purple];\
+    131 -> 74 [label=2\
+              ,color=purple];\
+    131 -> 131 [label=4\
+               ,color=purple];\
+    132 -> 13 [label=1,color=red];\
+    132 -> 74 [label=12\
+              ,color=purple];\
+    132 -> 132 [label=12\
+               ,color=purple];\
+    133 -> 13 [label=1,color=red];\
+    133 -> 74 [label=2\
+              ,color=purple];\
+    133 -> 133 [label=4\
+               ,color=purple];\
+    134 -> 134 [label=1\
+               ,color=purple];\
+    136 -> 39 [label=1,color=navy];\
+    136 -> 74 [label=26,color=navy];\
+    136 -> 136 [label=1\
+               ,color=purple];\
+}';
+var parsedData = vis.network.convertDot(DOTstring);
+
+var data = {
+  nodes: parsedData.nodes,
+  edges: parsedData.edges
+}
+
+var options = parsedData.options;
+
+// create a network
+var network = new vis.Network(container, data, options);
+</script></body></html>
